@@ -9,12 +9,12 @@
             </div>
         </div>
     </div>
-    
+
 
     <!-- Section Packages Start -->
     <section class="packages" id="packages">
         <div class="container">
-        
+
         <div class="main-txt">
             <h1><span>P</span>ackages</h1>
         </div>
@@ -28,15 +28,16 @@
 
                         <div class="card-body">
                             <h3><a href="{{ route('page.detailed_activity', [
-                                'id' => $content->id, 
+                                'id' => $content->id,
                                 'activity_name' => $content->activity_name,
-                                'description' => $content->description, 
+                                'description' => $content->description,
                                 'image' => $content->image,
-                                'contact' => $content->contact, // Add contact parameter
-                                'location' => $content->location // Add location parameter
+                                'contact' => $content->contact,
+                                'price' => $content->price,
+                                'location' => $content->location
                                 ]) }}" class="fw-bold text-primary">{{ $content->activity_name }}</a></h3>
-                                
-                            
+
+
 
                         <p class="card-text" id="description">{{ $content->description }}</p>
                         <div class="star">
@@ -48,9 +49,9 @@
                         </div>
                         {{-- <h6>Price: <strong>$500</strong></h6> --}}
                         <a href="{{ route('page.detailed_activity', [
-                                'id' => $content->id, 
+                                'id' => $content->id,
                                 'activity_name' => $content->activity_name,
-                                'description' => $content->description, 
+                                'description' => $content->description,
                                 'image' => $content->image,
                                 'contact' => $content->contact, // Add contact parameter
                                 'location' => $content->location // Add location parameter

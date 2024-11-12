@@ -7,6 +7,7 @@ use App\Http\Controllers\ExportController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\MpesaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,10 @@ Route::get('/detailed_activity', [HomeController::class, 'detailed_activity'])->
 
 Route::get('/activities', [HomeController::class, 'activities'])->name('page.activities');
 
+Route::get('/pay', [HomeController::class, 'pay'])->name('page.payment');
+
+Route::post('/makePayment', [MpesaController::class, 'initiatePayment']);
+
 // Post Activity to Database
 Route::post('/add', [HomeController::class, 'trip'])->name('pages.add');
 
@@ -53,7 +58,9 @@ Route::post('/save-review', [HomeController::class, 'saveReview'])->name('save-r
 Route::get('/export1', [ExportController::class, 'exportToCSVTable1'])->name('export1.csv');
 Route::get('/export2', [ExportController::class, 'exportToCSVTable2'])->name('export2.csv');
 
-
+Route::get('/payment', function(){
+    return view('pages.payment');
+});
 
 
 Route::middleware('auth')->group(function () {

@@ -2,8 +2,8 @@
 
     <style>
         @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
-       
-      
+
+
         .container .post{
         display: none;
         }
@@ -131,7 +131,7 @@
             </div>
           </div>
         </div>
-        
+
         <div class="col-md-4">
           <div class="row">
             <div class="col-md-12">
@@ -152,7 +152,7 @@
             </div>
           </div>
         </div>
-      </div>    
+      </div>
   </div>
 
   <!-- Middle Section -->
@@ -173,10 +173,23 @@
                           <i class="bi bi-telephone"></i><span>{{$contact}}</span>
                       </div>
                       <div class="m-3">
+                          <i class="bi bi-cash"></i><span>{{$price}}</span>
+                      </div>
+                      <div class="m-3">
                           <i class="bi bi-geo-alt"><span>{{$location}}</span></i>
                       </div>
                       <div class="m-3">
                           <i class="bi bi-calendar-check"><span>13th March, 7:00 pm to 10:00 pm</span></i>
+                      </div>
+                      <div class="m-3">
+                        <a href="{{ route('page.payment'
+                                // [
+                                // 'id' => $content->id,
+                                // 'contact' => $content->contact,
+                                // 'price' => $content->price,
+                                // 'location' => $content->location
+                                // ]
+                                ) }}">Pay</a>
                       </div>
                   </div>
               </div>
@@ -188,13 +201,13 @@
     <div class="container">
         <a href="#" class="text-primary" data-bs-toggle="modal" data-bs-target="#review_modal">Write a review</a>
     </div>
-    
+
     <!-- Modal -->
     <div class="modal fade" id="review_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Write a review</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Write a review here</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form id="review_form" method="POST" action="{{ route('save-review') }}">
@@ -217,7 +230,7 @@
                                         <label for="rate-2" class="fas fa-star"></label>
                                         <input type="radio" name="rate" id="rate-1" value="1">
                                         <label for="rate-1" class="fas fa-star"></label>
-                                    </div>                              
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="comment" class="form-label">Comment</label>
@@ -229,14 +242,14 @@
                     <div class="d-flex justify-content-center mb-2">
                         <div class="d-grid">
                             <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
-                        </div>          
+                        </div>
                     </div>
                 </form>
-                
+
             </div>
         </div>
     </div>
-    
+
 
     <div class="container">
       <div class="row">
@@ -254,15 +267,15 @@
           @endforeach
       </div>
     </div>
-  
-  
-    
+
+
+
 
   <!-- Recommendation_Carousel Section -->
 <section id="recommendation_section">
 
 </section>
-    
+
 <!-- Optional JavaScript for visual feedback -->
 <script>
       const btn = document.querySelector("button");
@@ -280,5 +293,5 @@
       }
 </script>
 
-  
+
 </x-app-layout>

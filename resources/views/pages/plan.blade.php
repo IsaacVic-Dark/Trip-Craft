@@ -2,7 +2,7 @@
 
 <div class="container contact-form">
     <h2 class="text-center mb-4">Create an Activity Here</h2>
-    <form action="add" method="POST" enctype="multipart/form-data">            
+    <form action="add" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="name">Activity name:</label>
@@ -11,6 +11,10 @@
         <div class="form-group">
             <label for="contact">Contact:</label>
             <input type="text" class="form-control" id="contact" name="contact" required>
+        </div>
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="number" class="form-control" id="price" name="price" required>
         </div>
         <div class="form-group">
             <label for="location">Location:</label>

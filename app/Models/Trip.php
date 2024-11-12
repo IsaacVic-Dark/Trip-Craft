@@ -9,7 +9,7 @@ class Trip extends Model
 {
     use HasFactory;
     protected $table='activity';
-    protected $fillable = ['name', 'email', 'contact', 'location', 'image', 'description'];
+    protected $fillable = ['name', 'email', 'contact','price','location', 'image', 'description'];
 
     public function reviews()
     {
