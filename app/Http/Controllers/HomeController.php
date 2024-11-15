@@ -10,6 +10,7 @@ use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use PhpParser\Node\Expr\FuncCall;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
@@ -47,8 +48,9 @@ class HomeController extends Controller
     public function activities(){
         return view('pages.activities');
     }
-    public function pay(){
-        return view('pages.payment');
+    public function pay(Request $request){
+        $price = $request->query('price');
+        return view('pages.payment', compact('price'));
     }
 
 
@@ -58,11 +60,18 @@ class HomeController extends Controller
         $image = $request->query('image');
         $contact = $request->query('contact');
         $price = $request->query('price');
+        $category = $request->query('category');
         $location = $request->query('location');
         $id = $request->query('id');
         $activity_id = $request->query('activity_id');
         $reviews = Review::where('activity_id', $id)->get();
-        return view('pages.detailed_activity', compact('activity_name', 'description', 'image', 'price', 'contact', 'location', 'activity_id', 'reviews', 'id'));
+
+
+        $averageRating = DB::table('reviews')
+        ->where('activity_id', $id)
+        ->avg('rating');
+
+        return view('pages.detailed_activity', compact('activity_name', 'description', 'image', 'price','category' ,'contact','averageRating' , 'location', 'activity_id', 'reviews', 'id'));
     }
 
 
@@ -74,8 +83,9 @@ class HomeController extends Controller
         $req->validate([
             'activity_name' => 'required|string',
             'contact' => 'required|string',
-            'price' => 'required|decimal',
+            'price' => 'required|integer',
             'location' => 'required|string',
+            'category' => 'required|string',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'description' => 'required|string',
         ]);
@@ -84,6 +94,7 @@ class HomeController extends Controller
         $trip->contact = $req->input('contact');
         $trip->price = $req->input('price');
         $trip->location = $req->input('location');
+        $trip->category = $req->input('category');
 
         if ($req->hasFile('image') && $req->file('image')->isValid()) {
             $trip->image = $req->file('image')->store('images', 'public');
@@ -158,4 +169,17 @@ class HomeController extends Controller
 
         return redirect()->back();
     }
+
+    // Check the average of rating of an activity
+    // public function getAverageRating($activityId)
+    // {
+    //     $averageRating = DB::table('ratings')
+    //         ->where('activity_id', $activityId)
+    //         ->avg('rating');
+
+    //     return response()->json([
+    //         'activity_id' => $activityId,
+    //         'average_rating' => $averageRating
+    //     ]);
+    // }
 }

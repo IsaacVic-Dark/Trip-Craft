@@ -21,6 +21,14 @@
             <input type="text" class="form-control" id="location" name="location" required>
         </div>
         <div class="form-group">
+            <label for="category">Category</label>
+    <select name="category" id="category" required>
+        <option value="with_family">With Family</option>
+        <option value="with_partner">With Partner</option>
+        <option value="with_friends">With Friends</option>
+    </select>
+        </div>
+        <div class="form-group">
             <label for="image">Choose an Image:</label>
             <input type="file" class="form-control-file" id="imageInput" name="image" accept="image/*">
         </div>

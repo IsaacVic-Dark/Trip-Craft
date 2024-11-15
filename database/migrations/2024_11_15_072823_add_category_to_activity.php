@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('activity', function (Blueprint $table) {
             //
-            $table -> unsignedInteger('price')->nullable();
+            $table->enum('category', ['with_family', 'with_partner', 'with_friends'])->nullable();
         });
     }
 
@@ -24,7 +24,7 @@ return new class extends Migration
     {
         Schema::table('activity', function (Blueprint $table) {
             //
-            $table->dropColumn('price');
+            $table->dropColumn('category');
         });
     }
 };

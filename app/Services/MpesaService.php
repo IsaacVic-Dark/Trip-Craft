@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 class MpesaService
@@ -31,7 +32,7 @@ class MpesaService
         return $response['access_token'] ?? null;
     }
 
-    public function stkPush($phone, $amount)
+    public function stkPush($phone, $price)
     {
         $url = $this->environment === 'sandbox'
             ? 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest'
@@ -39,13 +40,15 @@ class MpesaService
 
         $timestamp = now()->format('YmdHis');
         $password = base64_encode($this->shortcode . $this->passkey . $timestamp);
+        // $price = $request->query('price');
 
         $response = Http::withToken($this->getAccessToken())->post($url, [
             'BusinessShortCode' => $this->shortcode,
             'Password' => $password,
             'Timestamp' => $timestamp,
             'TransactionType' => 'CustomerPayBillOnline',
-            'Amount' => $amount,
+            // 'Amount' => $amount,
+            'Amount' => $price,
             'PartyA' => $phone,
             'PartyB' => $this->shortcode,
             'PhoneNumber' => $phone,

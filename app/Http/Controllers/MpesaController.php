@@ -16,9 +16,12 @@ class MpesaController extends Controller
     public function initiatePayment(Request $req){
         $req->validate([
             'phone' => 'required',
-            'amount' => 'required|numeric',
+            'price' => 'required',
         ]);
-        $res = $this->mpesaService->stkPush($req->phone, $req->amount);
+        // $price = $req->query('price');
+        // dd($price);
+        $res = $this->mpesaService->stkPush($req->phone, $req->price);
+        // echo "<script>console.log('PHP message: $price')</script>";
         return response()->json($res);
     }
 

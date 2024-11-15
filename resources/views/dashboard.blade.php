@@ -1,5 +1,4 @@
 <x-app-layout>
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -10,60 +9,75 @@
         </div>
     </div>
 
-
     <!-- Section Packages Start -->
     <section class="packages" id="packages">
         <div class="container">
+            <div class="row" style="margin-top: 30px;">
 
-        <div class="main-txt">
-            <h1><span>P</span>ackages</h1>
-        </div>
+                {{-- Group content by category --}}
+                @php
+                    $groupedContent = $content->groupBy('category');
+                @endphp
 
-        <div class="row" style="margin-top: 30px;">
+                @foreach ($groupedContent as $category => $items)
+                    <div class="col-md-12 py-3 py-md-0">
+                        {{-- Category header --}}
+                        <h1 class="text-capitalize">{{ str_replace('_', ' ', $category) }}</h1>
 
-            @foreach ($content as $content)
-                <div class="col-md-4 py-3 py-md-0">
-                    <div class="card">
-                        <img src="{{ asset('storage/' . $content -> image) }}" class="card-img-top" alt="Trip Image">
+                        <div class="row">
+                            @foreach ($items as $item)
+                                <div class="col-md-4 py-3">
+                                    <div class="card">
+                                        <img src="{{ asset('storage/' . $item->image) }}" class="card-img-top" alt="{{ $item->activity_name }}">
 
-                        <div class="card-body">
-                            <h3><a href="{{ route('page.detailed_activity', [
-                                'id' => $content->id,
-                                'activity_name' => $content->activity_name,
-                                'description' => $content->description,
-                                'image' => $content->image,
-                                'contact' => $content->contact,
-                                'price' => $content->price,
-                                'location' => $content->location
-                                ]) }}" class="fw-bold text-primary">{{ $content->activity_name }}</a></h3>
+                                        <div class="card-body">
+                                            <h3>
+                                                <a href="{{ route('page.detailed_activity', [
+                                                    'id' => $item->id,
+                                                    'activity_name' => $item->activity_name,
+                                                    'description' => $item->description,
+                                                    'image' => $item->image,
+                                                    'contact' => $item->contact,
+                                                    'price' => $item->price,
+                                                    'category' => $item->category,
+                                                    'location' => $item->location
+                                                ]) }}" class="fw-bold text-primary">
+                                                    {{ $item->activity_name }}
+                                                </a>
+                                            </h3>
 
+                                            <p class="card-text" id="description">{{ $item->description }}</p>
 
+                                            <div class="star">
+                                                <i class="fa-solid fa-star checked"></i>
+                                                <i class="fa-solid fa-star checked"></i>
+                                                <i class="fa-solid fa-star checked"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                            </div>
 
-                        <p class="card-text" id="description">{{ $content->description }}</p>
-                        <div class="star">
-                            <i class="fa-solid fa-star checked"></i>
-                            <i class="fa-solid fa-star checked"></i>
-                            <i class="fa-solid fa-star checked"></i>
-                            <i class="fa-solid fa-star "></i>
-                            <i class="fa-solid fa-star "></i>
-                        </div>
-                        {{-- <h6>Price: <strong>$500</strong></h6> --}}
-                        <a href="{{ route('page.detailed_activity', [
-                                'id' => $content->id,
-                                'activity_name' => $content->activity_name,
-                                'description' => $content->description,
-                                'image' => $content->image,
-                                'contact' => $content->contact, // Add contact parameter
-                                'location' => $content->location // Add location parameter
-                                ]) }}" class="fw-bold text-primary">View More</a>
+                                            <a href="{{ route('page.detailed_activity', [
+                                                'id' => $item->id,
+                                                'activity_name' => $item->activity_name,
+                                                'description' => $item->description,
+                                                'image' => $item->image,
+                                                'contact' => $item->contact,
+                                                'price' => $item->price,
+                                                'category' => $item->category,
+                                                'location' => $item->location
+                                            ]) }}" class="fw-bold text-primary">
+                                                View More
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
-                </div>
-            @endforeach
-        </div>
+                @endforeach
 
+            </div>
         </div>
     </section>
     <!-- Section Packages End -->
-
 </x-app-layout>

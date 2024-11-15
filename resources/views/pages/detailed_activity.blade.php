@@ -179,16 +179,22 @@
                           <i class="bi bi-geo-alt"><span>{{$location}}</span></i>
                       </div>
                       <div class="m-3">
+                          <i class="bi bi-geo-alt"><span>{{$category}}</span></i>
+                      </div>
+                      <div class="m-3">
+                        <p><span>{{$averageRating}}</span>: rated</p>
+                      </div>
+                      <div class="m-3">
                           <i class="bi bi-calendar-check"><span>13th March, 7:00 pm to 10:00 pm</span></i>
                       </div>
                       <div class="m-3">
-                        <a href="{{ route('page.payment'
-                                // [
+                        <a href="{{ route('page.payment',
+                                [
                                 // 'id' => $content->id,
-                                // 'contact' => $content->contact,
-                                // 'price' => $content->price,
+                                'contact' => $contact,
+                                'price' => $price,
                                 // 'location' => $content->location
-                                // ]
+                                ]
                                 ) }}">Pay</a>
                       </div>
                   </div>

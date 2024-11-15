@@ -1,10 +1,10 @@
 <x-app-layout>
+    <p>Amount will be <span>{{$price}}</span></p>
     <div>
         <form action="/makePayment" method="POST">
             @csrf
             <input type="number" placeholder="e.g.., 254712345678" name="phone">
-            <input type="number" placeholder="e.g.., 100" name="amount">
-            {{-- <p>Amount will be <span>Kshs 100</span></p> --}}
+            <input type="hidden" name="price" value="{{ $price }}">
             <button type="submit">Pay</button>
         </form>
     </div>
