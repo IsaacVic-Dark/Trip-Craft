@@ -8,3 +8,5 @@ This is where the trip is displayed in detail
 ![Screenshot of the app](public/images/Screenshot_114.png)
 This is where a trip is payed for
 ![Screenshot of the app](public/images/Screenshot_115.png)
+This is the admin section of Trip Craft
+![Screenshot of the app](public/images/Screenshot_116.png)

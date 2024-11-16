@@ -40,8 +40,9 @@
                                                     'contact' => $item->contact,
                                                     'price' => $item->price,
                                                     'category' => $item->category,
-                                                    'location' => $item->location
-                                                ]) }}" class="fw-bold text-primary">
+                                                    'location' => $item->location,
+                                                    'date'=> $item->created_at->format('F j, Y, g:i a')
+                                                    ]) }}" class="fw-bold text-primary">
                                                     {{ $item->activity_name }}
                                                 </a>
                                             </h3>
@@ -64,7 +65,8 @@
                                                 'contact' => $item->contact,
                                                 'price' => $item->price,
                                                 'category' => $item->category,
-                                                'location' => $item->location
+                                                'location' => $item->location,
+                                                'date'=> $item->created_at->format('F j, Y, g:i a')
                                             ]) }}" class="fw-bold text-primary">
                                                 View More
                                             </a>

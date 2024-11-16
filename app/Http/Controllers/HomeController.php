@@ -62,6 +62,7 @@ class HomeController extends Controller
         $price = $request->query('price');
         $category = $request->query('category');
         $location = $request->query('location');
+        $date = $request->query('date');
         $id = $request->query('id');
         $activity_id = $request->query('activity_id');
         $reviews = Review::where('activity_id', $id)->get();
@@ -71,7 +72,7 @@ class HomeController extends Controller
         ->where('activity_id', $id)
         ->avg('rating');
 
-        return view('pages.detailed_activity', compact('activity_name', 'description', 'image', 'price','category' ,'contact','averageRating' , 'location', 'activity_id', 'reviews', 'id'));
+        return view('pages.detailed_activity', compact('activity_name', 'description', 'image', 'price','category' ,'contact','averageRating' , 'location', 'activity_id','date' ,'reviews', 'id'));
     }
 
 
@@ -169,17 +170,4 @@ class HomeController extends Controller
 
         return redirect()->back();
     }
-
-    // Check the average of rating of an activity
-    // public function getAverageRating($activityId)
-    // {
-    //     $averageRating = DB::table('ratings')
-    //         ->where('activity_id', $activityId)
-    //         ->avg('rating');
-
-    //     return response()->json([
-    //         'activity_id' => $activityId,
-    //         'average_rating' => $averageRating
-    //     ]);
-    // }
 }
