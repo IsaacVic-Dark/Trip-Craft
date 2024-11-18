@@ -36,6 +36,8 @@ Route::get('/pay', [HomeController::class, 'pay'])->name('page.payment');
 
 Route::post('/makePayment', [MpesaController::class, 'initiatePayment']);
 
+Route::get('/search', [HomeController::class, 'search'])->name('search');
+
 // Post Activity to Database
 Route::post('/add', [HomeController::class, 'trip'])->name('pages.add');
 

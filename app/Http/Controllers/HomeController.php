@@ -38,6 +38,13 @@ class HomeController extends Controller
         }
     }
 
+    // Search function
+    public function search(Request $req){
+        $query = $req->input('query');
+        $content = Trip::where('activity_name', 'LIKE', '%' . $query . '%')->get();
+        return view('dashboard', compact('content', 'query'));
+    }
+
     // Display Pages
     public function plan(){
         return view('pages.plan');
@@ -170,4 +177,6 @@ class HomeController extends Controller
 
         return redirect()->back();
     }
+
+
 }

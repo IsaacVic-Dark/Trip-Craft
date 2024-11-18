@@ -9,6 +9,14 @@
         </div>
     </div>
 
+    {{-- Search box --}}
+    <div>
+        <form action="search" method="GET">
+            <input type="text" name="query">
+            <button type="submit">submit</button>
+        </form>
+    </div>
+
     <!-- Section Packages Start -->
     <section class="packages" id="packages">
         <div class="container">
