@@ -18,14 +18,7 @@ class MpesaController extends Controller
             'phone' => 'required',
             'price' => 'required',
         ]);
-        // $price = $req->query('price');
-        // dd($price);
         $res = $this->mpesaService->stkPush($req->phone, $req->price);
-        // echo "<script>console.log('PHP message: $price')</script>";
         return response()->json($res);
     }
-
-    // public function callback(Request $req){
-
-    // }
 }

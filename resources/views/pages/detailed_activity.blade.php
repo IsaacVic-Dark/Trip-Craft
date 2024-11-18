@@ -185,16 +185,13 @@
                         <p><span>{{$averageRating}}</span>: rated</p>
                       </div>
                       <div class="m-3">
-                          {{-- <i class="bi bi-calendar-check"><span>13th March, 7:00 pm to 10:00 pm</span></i> --}}
                           <i class="bi bi-calendar-check"><span>{{$date}}</span></i>
                       </div>
                       <div class="m-3">
                         <a href="{{ route('page.payment',
                                 [
-                                // 'id' => $content->id,
                                 'contact' => $contact,
                                 'price' => $price,
-                                // 'location' => $content->location
                                 ]
                                 ) }}"><span class="text-primary">Pay</span></a>
                       </div>
