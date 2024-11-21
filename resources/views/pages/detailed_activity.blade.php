@@ -120,6 +120,7 @@
    <!-- Image Gallery -->
   <div class="container">
     <h1>{{$activity_name}}</h1>
+    <h1>Created by: {{$user->name}}</h1>
 
     {{-- <p>ID: {{ $id }}</p> --}}
       <div class="row">
@@ -182,7 +183,11 @@
                           <i class="bi bi-geo-alt"><span>{{$category}}</span></i>
                       </div>
                       <div class="m-3">
-                        <p><span>{{$averageRating}}</span>: rated</p>
+                            @if ($averageRating <= 0)
+                              <p>Not rated</p>
+                            @else
+                                <p><span>{{$averageRating}}</span>: rated</p>
+                            @endif
                       </div>
                       <div class="m-3">
                           <i class="bi bi-calendar-check"><span>{{$date}}</span></i>
@@ -263,6 +268,7 @@
                       <div class="card" style="width: 18rem;">
                           <div class="card-body">
                               <h6 class="card-subtitle mb-2 text-body-secondary">{{ $review->rating }}</h6>
+                              <p class="card-text">{{$review->user->name}}</p>
                               <p class="card-text">{{$review->comment}}</p>
                           </div>
                       </div>

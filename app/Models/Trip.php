@@ -9,10 +9,14 @@ class Trip extends Model
 {
     use HasFactory;
     protected $table='activity';
-    protected $fillable = ['name', 'email', 'contact','price','location', 'image','category','date' ,'averageRating', 'description'];
+    protected $fillable = ['name','user_id', 'email', 'contact','price','location', 'image','category','date' ,'averageRating', 'description'];
 
     public function reviews()
     {
         return $this->hasMany(Review::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

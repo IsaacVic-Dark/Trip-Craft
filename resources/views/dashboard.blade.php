@@ -74,6 +74,7 @@
                                                 'price' => $item->price,
                                                 'category' => $item->category,
                                                 'location' => $item->location,
+                                                'user' => $item->user,
                                                 'date'=> $item->created_at->format('F j, Y, g:i a')
                                             ]) }}" class="fw-bold text-primary">
                                                 View More

@@ -62,25 +62,37 @@ class HomeController extends Controller
 
 
     public function detailed_activity(Request $request) {
-        $activity_name = $request->query('activity_name');
-        $description = $request->query('description');
-        $image = $request->query('image');
-        $contact = $request->query('contact');
-        $price = $request->query('price');
-        $category = $request->query('category');
-        $location = $request->query('location');
-        $date = $request->query('date');
-        $id = $request->query('id');
-        $activity_id = $request->query('activity_id');
-        $reviews = Review::where('activity_id', $id)->get();
+        $id = $request->query('id'); // Trip ID
 
+        // Fetch the trip and the associated user
+        $trip = Trip::with('user')->find($id);
+
+        if (!$trip) {
+            return redirect()->back()->with('error', 'Trip not found');
+        }
+
+        $reviews = Review::with('user')->where('activity_id', $id)->get();
 
         $averageRating = DB::table('reviews')
-        ->where('activity_id', $id)
-        ->avg('rating');
+            ->where('activity_id', $id)
+            ->avg('rating');
 
-        return view('pages.detailed_activity', compact('activity_name', 'description', 'image', 'price','category' ,'contact','averageRating' , 'location', 'activity_id','date' ,'reviews', 'id'));
+        return view('pages.detailed_activity', [
+            'activity_name' => $trip->activity_name,
+            'description' => $trip->description,
+            'image' => $trip->image,
+            'price' => $trip->price,
+            'category' => $trip->category,
+            'contact' => $trip->contact,
+            'location' => $trip->location,
+            'date' => $trip->created_at,
+            'reviews' => $reviews,
+            'averageRating' => $averageRating,
+            'id' => $trip->id,
+            'user' => $trip->user, // Pass the user data
+        ]);
     }
+
 
 
 
@@ -103,6 +115,7 @@ class HomeController extends Controller
         $trip->price = $req->input('price');
         $trip->location = $req->input('location');
         $trip->category = $req->input('category');
+        $trip->user_id = Auth::id();
 
         if ($req->hasFile('image') && $req->file('image')->isValid()) {
             $trip->image = $req->file('image')->store('images', 'public');
@@ -160,23 +173,26 @@ class HomeController extends Controller
     }
 
 
-    // Review Post
+
     public function saveReview(Request $request)
     {
         // Validate the request
         $validatedData = $request->validate([
             'rate' => 'required|integer|between:1,5',
             'comment' => 'required|string',
+            'activity_id' => 'required|exists:activity,id',
         ]);
 
         $review = new Review();
         $review->rating = $validatedData['rate'];
         $review->comment = $validatedData['comment'];
-        $review->activity_id = $request->input('activity_id'); // Use activity_id instead of trip_id
+        $review->activity_id = $request->input('activity_id');
+        $review->user_id = Auth::id(); // Associate the authenticated user
         $review->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Review posted successfully!');
     }
+
 
 
 }
