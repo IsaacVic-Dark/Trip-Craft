@@ -9,7 +9,7 @@
         </div>
         <div class="form-group">
             <label for="contact">Contact:</label>
-            <input type="text" class="form-control" id="contact" name="contact" required>
+            <input type="tel" class="form-control" id="phone" name="contact" required>
         </div>
         <div class="form-group">
             <label for="price">Price:</label>

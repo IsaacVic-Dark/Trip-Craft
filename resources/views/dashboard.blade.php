@@ -25,6 +25,7 @@
                 <div>
                     <h1>Choose your category</h1>
                     <ul>
+                        <li><a href="">All</a></li>
                         <li><a href="">With Family</a></li>
                         <li><a href="">With Partner</a></li>
                         <li><a href="">With Friends</a></li>
@@ -60,7 +61,6 @@
                                                     'price' => $item->price,
                                                     'category' => $item->category,
                                                     'location' => $item->location,
-                                                    // 'weather' => $item->weather,
                                                     'date'=> $item->created_at->format('F j, Y, g:i a')
                                                     ]) }}" class="fw-bold text-primary">
                                                     {{ $item->activity_name }}

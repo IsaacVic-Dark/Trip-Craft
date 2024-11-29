@@ -78,15 +78,12 @@ class HomeController extends Controller
             ->where('activity_id', $id)
             ->avg('rating');
 
-        // OPTIONAL: Fetch weather data if location exists
         $weather = null;
-        $location = $trip->location; // Example: Use trip's location for weather
+        $location = $trip->location;
         if ($location) {
-            $weatherService = app(WeatherService::class); // Instantiate the WeatherService
+            $weatherService = app(WeatherService::class);
             $weather = $weatherService->getWeather($location);
         }
-
-        // dd($weather);
 
         return view('pages.detailed_activity', [
             'activity_name' => $trip->activity_name,
@@ -103,10 +100,9 @@ class HomeController extends Controller
             'id' => $trip->id,
             'user' => $trip->user,
             'createdAgo' => $createdAgo,
-            'weather' => $weather, // Pass weather data to view
+            'weather' => $weather,
         ]);
     }
-
 
     // Post Activity to Database
     public function trip(Request $req){
@@ -119,7 +115,7 @@ class HomeController extends Controller
             'location' => 'required|string',
             'category' => 'required|string',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'description' => 'required|string',
+            'description' => 'required|string|max:65535',
             'starting_at' => 'required|date',
             'ending_at' => 'required|date|after:starting_at'
         ]);
