@@ -9,17 +9,28 @@
         </div>
     </div>
 
-    {{-- Search box --}}
-    <div>
-        <form action="search" method="GET">
-            <input type="text" name="query">
-            <button type="submit">submit</button>
-        </form>
-    </div>
 
     <!-- Section Packages Start -->
     <section class="packages" id="packages">
-        <div class="container">
+        <div class="container flex">
+            <div class="border p-12 m-4">
+                <h1>Menu</h1>
+                {{-- Search box --}}
+                <div>
+                    <form action="search" method="GET">
+                        <input type="text" name="query">
+                        <button type="submit">submit</button>
+                    </form>
+                </div>
+                <div>
+                    <h1>Choose your category</h1>
+                    <ul>
+                        <li><a href="">With Family</a></li>
+                        <li><a href="">With Partner</a></li>
+                        <li><a href="">With Friends</a></li>
+                    </ul>
+                </div>
+            </div>
             <div class="row" style="margin-top: 30px;">
 
                 {{-- Group content by category --}}
@@ -49,6 +60,7 @@
                                                     'price' => $item->price,
                                                     'category' => $item->category,
                                                     'location' => $item->location,
+                                                    // 'weather' => $item->weather,
                                                     'date'=> $item->created_at->format('F j, Y, g:i a')
                                                     ]) }}" class="fw-bold text-primary">
                                                     {{ $item->activity_name }}
@@ -75,8 +87,9 @@
                                                 'category' => $item->category,
                                                 'location' => $item->location,
                                                 'user' => $item->user,
-                                                'date'=> $item->created_at->format('F j, Y, g:i a')
-                                            ]) }}" class="fw-bold text-primary">
+                                                'date'=> $item->starting_at->format('F j, Y, g:i a'),
+                                                'end_date'=> $item->ending_at->format('F j, Y, g:i a')
+                                                ]) }}" class="fw-bold text-primary">
                                                 View More
                                             </a>
                                         </div>

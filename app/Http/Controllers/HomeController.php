@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use id;
+use Carbon\Carbon;
 use App\Models\Trip;
 use App\Models\User;
 use App\Models\Review;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use App\Services\WeatherService;
 use Illuminate\Http\JsonResponse;
 use PhpParser\Node\Expr\FuncCall;
 use Illuminate\Support\Facades\DB;
@@ -60,22 +62,31 @@ class HomeController extends Controller
         return view('pages.payment', compact('price'));
     }
 
-
-    public function detailed_activity(Request $request) {
+    public function detailed_activity(Request $request)
+    {
         $id = $request->query('id'); // Trip ID
 
-        // Fetch the trip and the associated user
         $trip = Trip::with('user')->find($id);
 
         if (!$trip) {
             return redirect()->back()->with('error', 'Trip not found');
         }
 
+        $createdAgo = Carbon::parse($trip->created_at)->diffForHumans();
         $reviews = Review::with('user')->where('activity_id', $id)->get();
-
         $averageRating = DB::table('reviews')
             ->where('activity_id', $id)
             ->avg('rating');
+
+        // OPTIONAL: Fetch weather data if location exists
+        $weather = null;
+        $location = $trip->location; // Example: Use trip's location for weather
+        if ($location) {
+            $weatherService = app(WeatherService::class); // Instantiate the WeatherService
+            $weather = $weatherService->getWeather($location);
+        }
+
+        // dd($weather);
 
         return view('pages.detailed_activity', [
             'activity_name' => $trip->activity_name,
@@ -85,19 +96,20 @@ class HomeController extends Controller
             'category' => $trip->category,
             'contact' => $trip->contact,
             'location' => $trip->location,
-            'date' => $trip->created_at,
+            'date' => $trip->starting_at,
+            'end_date' => $trip->ending_at,
             'reviews' => $reviews,
             'averageRating' => $averageRating,
             'id' => $trip->id,
-            'user' => $trip->user, // Pass the user data
+            'user' => $trip->user,
+            'createdAgo' => $createdAgo,
+            'weather' => $weather, // Pass weather data to view
         ]);
     }
 
 
-
-
     // Post Activity to Database
-    function trip(Request $req){
+    public function trip(Request $req){
         $trip = new Trip;
 
         $req->validate([
@@ -108,6 +120,8 @@ class HomeController extends Controller
             'category' => 'required|string',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'description' => 'required|string',
+            'starting_at' => 'required|date',
+            'ending_at' => 'required|date|after:starting_at'
         ]);
 
         $trip->activity_name = $req->input('activity_name');
@@ -115,6 +129,8 @@ class HomeController extends Controller
         $trip->price = $req->input('price');
         $trip->location = $req->input('location');
         $trip->category = $req->input('category');
+        $trip->starting_at = $req->input('starting_at');
+        $trip->ending_at = $req->input('ending_at');
         $trip->user_id = Auth::id();
 
         if ($req->hasFile('image') && $req->file('image')->isValid()) {
@@ -132,7 +148,6 @@ class HomeController extends Controller
         $user = User::findOrFail($id);
         return response()->json($user);
     }
-
 
     public function storeUser(Request $request)
     {
@@ -192,7 +207,4 @@ class HomeController extends Controller
 
         return redirect()->back()->with('success', 'Review posted successfully!');
     }
-
-
-
 }

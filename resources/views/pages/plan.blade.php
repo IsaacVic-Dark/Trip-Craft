@@ -1,5 +1,4 @@
 <x-app-layout>
-
 <div class="container contact-form">
     <h2 class="text-center mb-4">Create an Activity Here</h2>
     <form action="add" method="POST" enctype="multipart/form-data">
@@ -19,6 +18,12 @@
         <div class="form-group">
             <label for="location">Location:</label>
             <input type="text" class="form-control" id="location" name="location" required>
+        </div>
+        <div class="no-style">
+            <label for="starting_at">Date of activity:</label>
+            <input type="datetime-local" class="form-control" id="starting_at" name="starting_at" required>
+            <label for="starting_at">to:</label>
+            <input type="datetime-local" class="form-control" id="ending_at" name="ending_at" required>
         </div>
         <div class="form-group">
             <label for="category">Category</label>

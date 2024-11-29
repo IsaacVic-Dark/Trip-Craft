@@ -3,11 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InfoController;
+use App\Http\Controllers\MpesaController;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WeatherController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\MpesaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,8 @@ Route::get('/plan', [HomeController::class, 'plan'])->name('page.plan');
 Route::get('/review', [HomeController::class, 'review'])->name('page.review');
 
 Route::get('/detailed_activity', [HomeController::class, 'detailed_activity'])->name('page.detailed_activity');
+
+// Route::get('/weather/{location}', [WeatherController::class, 'show']);
 
 Route::get('/activities', [HomeController::class, 'activities'])->name('page.activities');
 

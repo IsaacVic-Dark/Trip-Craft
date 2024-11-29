@@ -99,57 +99,5 @@
         <!-- Bootstrap Datepicker JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 
-          <!-- flatpickr CDN -->
-        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-
-        <script>
-            // Flatpickr for date and time input
-            config = {
-                enableTime: true,
-                altInput: true,
-                altFormat: "F j, Y (h:S K)"
-            }
-            flatpickr ("input[type=datetime-local]", config);
-
-            // Validate entry of either hour or day duration
-            document.getElementById('eventDurationForm').addEventListener('submit', function(event) {
-                var hours = document.getElementById('hours').value.trim();
-                var days = document.getElementById('days').value.trim();
-                var validationMessage = document.getElementById('validationMessage');
-
-                if (hours !== '' && days !== '') {
-                    // Both fields are filled, show error message and prevent form submission
-                    validationMessage.textContent = 'Please enter duration in either hours or days, but not both.';
-                    validationMessage.style.color = 'red'; // Set text color to red
-                    event.preventDefault(); // Prevent form submission
-                }
-            });
-            // End of Flatpickr
-
-            // Read more feature in cards
-            document.addEventListener("DOMContentLoaded", function() {
-                var description = document.getElementById('description');
-                var readMoreLink = document.getElementById('readMoreLink');
-
-                // Set the number of lines to trigger "Read More"
-                var triggerLines = 3;
-
-                // Calculate height of single line
-                var lineHeight = parseFloat(window.getComputedStyle(description).lineHeight);
-
-                // Calculate maximum height of description
-                var maxHeight = triggerLines * lineHeight;
-
-                // Check if description exceeds maximum height
-                if (description.scrollHeight > maxHeight) {
-                    readMoreLink.style.display = 'block'; // Show the link
-                }
-            });
-            // End of read more feature
-
-
-
-        </script>
-
     </body>
 </html>

@@ -121,6 +121,7 @@
   <div class="container">
     <h1>{{$activity_name}}</h1>
     <h1>Created by: {{$user->name}}</h1>
+    <h1>Posted {{$createdAgo}}</h1>
 
     {{-- <p>ID: {{ $id }}</p> --}}
       <div class="row">
@@ -180,6 +181,10 @@
                           <i class="bi bi-geo-alt"><span>{{$location}}</span></i>
                       </div>
                       <div class="m-3">
+                          <i class="bi bi-cloud-sun"><span>{{$weather['weather'][0]['description']}}</span></i>
+                      </div>
+                      </div>
+                      <div class="m-3">
                           <i class="bi bi-geo-alt"><span>{{$category}}</span></i>
                       </div>
                       <div class="m-3">
@@ -190,7 +195,10 @@
                             @endif
                       </div>
                       <div class="m-3">
-                          <i class="bi bi-calendar-check"><span>{{$date}}</span></i>
+                          <i class="bi bi-calendar-check"><span>Starting at: {{$date}}</span></i>
+                      </div>
+                      <div class="m-3">
+                          <i class="bi bi-calendar-check"><span>Ending at: {{$end_date}}</span></i>
                       </div>
                       <div class="m-3">
                         <a href="{{ route('page.payment',
