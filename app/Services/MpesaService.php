@@ -40,14 +40,12 @@ class MpesaService
 
         $timestamp = now()->format('YmdHis');
         $password = base64_encode($this->shortcode . $this->passkey . $timestamp);
-        // $price = $request->query('price');
 
         $response = Http::withToken($this->getAccessToken())->post($url, [
             'BusinessShortCode' => $this->shortcode,
             'Password' => $password,
             'Timestamp' => $timestamp,
             'TransactionType' => 'CustomerPayBillOnline',
-            // 'Amount' => $amount,
             'Amount' => $price,
             'PartyA' => $phone,
             'PartyB' => $this->shortcode,

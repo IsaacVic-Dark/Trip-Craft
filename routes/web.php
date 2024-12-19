@@ -23,7 +23,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::get('/plan', [HomeController::class, 'plan'])->name('page.plan');
 

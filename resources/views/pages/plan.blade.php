@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout title="Planning Page">
 <div class="container contact-form">
     <h2 class="text-center mb-4">Create an Activity Here</h2>
     <form action="add" method="POST" enctype="multipart/form-data">

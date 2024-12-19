@@ -1,4 +1,5 @@
-<x-guest-layout>
+<x-guest-layout title="SignUp Page">
+    <a href="{{ route('welcome')}}">Back</a>
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
