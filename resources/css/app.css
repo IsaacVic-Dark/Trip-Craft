@@ -1,3 +1,107 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-white text-primary-dark font-sans;
+    }
+
+    h1 {
+        @apply text-hero font-bold tracking-tight mb-6 text-primary-dark;
+    }
+
+    h2, h3 {
+        @apply text-2xl md:text-3xl font-semibold mb-4 text-primary-dark;
+    }
+
+    p {
+        @apply text-lg leading-relaxed text-medium-gray;
+    }
+}
+
+@layer components {
+    .container {
+        @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    }
+
+    .section {
+        @apply py-section;
+    }
+
+    .hero {
+        @apply py-hero text-center bg-gradient-to-br from-white via-light-gray to-white;
+    }
+
+    .btn-primary {
+        @apply bg-gradient-to-r from-primary-yellow to-secondary-yellow
+               text-primary-dark font-semibold px-8 py-4 rounded-full
+               inline-block transition-all duration-300 hover:-translate-y-1
+               hover:shadow-lg text-lg;
+    }
+
+    .btn-secondary {
+        @apply border-2 border-primary-dark text-primary-dark px-6 py-3 rounded-full
+               inline-block transition-all duration-300 hover:bg-primary-dark
+               hover:text-white font-semibold;
+    }
+
+    .feature-card {
+        @apply bg-white rounded-2xl p-8 shadow-card border border-gray-100
+               transition-all duration-300 text-center hover:-translate-y-1
+               hover:shadow-card-hover;
+    }
+
+    .testimonial {
+        @apply bg-white rounded-2xl p-8 shadow-card border border-gray-100 relative my-5;
+    }
+
+    .testimonial::before {
+        content: '"';
+        @apply text-6xl text-primary-yellow absolute -top-2 left-5 font-serif;
+    }
+
+    .testimonial-author {
+        @apply font-semibold mt-5 text-primary-yellow;
+    }
+
+    .testimonial-role {
+        @apply text-sm text-medium-gray italic;
+    }
+
+    .grid-layout {
+        @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-16;
+    }
+
+    .card {
+        @apply bg-white rounded-2xl p-8 text-center shadow-card border border-gray-100
+               transition-all duration-300 hover:scale-105 hover:shadow-card-hover;
+    }
+
+    .price {
+        @apply text-5xl font-black text-primary-yellow leading-none;
+    }
+
+    .price-period {
+        @apply text-base font-normal text-medium-gray;
+    }
+
+    .gradient-overlay {
+        @apply bg-gradient-to-r from-primary-yellow via-secondary-yellow to-primary-yellow
+               bg-[length:300%_300%] animate-gradient;
+    }
+
+    .descriptor-words {
+        @apply italic font-light opacity-80 inline-block text-primary-yellow;
+    }
+}
+
+@layer utilities {
+    .interactive-element {
+        @apply transition-all duration-300 ease-in-out;
+    }
+
+    .interactive-element:hover {
+        @apply -translate-y-1 scale-102;
+    }
+}

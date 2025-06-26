@@ -16,11 +16,19 @@ class WeatherController extends Controller
 
     public function show(Request $request){
         $location = $request->query('location');
-        dd($location);
-        $weatherData = $this->weatherService->getWeather($location);
-        if (isset($weatherData['error'])) {
-            return view('pages.detailed_activity', ['error' => $weatherData['error']]);
-        }
-        return view('pages.detailed_activity', ['weather' => $weatherData]);
+        // dd($location);
+        // try {
+            //code...
+            $weatherData = $this->weatherService->getWeather($location);
+            if (isset($weatherData['error'])) {
+                // return view('pages.detailed_activity', ['error' => $weatherData['error']]);
+                return view('pages.detailed_activity', "No weather data found");
+            }
+            return view('pages.detailed_activity', ['weather' => $weatherData]);
+        // } catch (\Throwable $th) {
+        //     //throw $th;
+        //     return view('pages.detailed_activity', "No weather data found");
+        // }
+
     }
 }
