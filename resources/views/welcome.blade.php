@@ -54,64 +54,56 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-white via-light-gray to-white"></div>
+    <section id="home" class="hero relative overflow-hidden min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-white via-light-gray to-white">
         <div class="absolute inset-0 bg-[url('/images/camping.jpg')] bg-cover bg-center opacity-10"></div>
-        
         <div class="container relative z-10">
             <div class="text-center py-32">
-                <h5 class="text-primary-yellow text-xl font-medium mb-4">Welcome to Trip Craft</h5>
-                <h1 class="text-6xl md:text-8xl font-black mb-8 leading-tight text-primary-dark">
-                    Plan Your 
-                    <span class="gradient-overlay bg-clip-text text-transparent">Dream Adventure</span>
+                <h5 class="text-primary-yellow text-2xl font-semibold mb-4 tracking-wide">Welcome to Trip Craft</h5>
+                <h1 class="text-7xl md:text-8xl font-black mb-8 leading-tight text-primary-dark">
+                    Plan Your <span class="gradient-overlay bg-clip-text text-transparent">Dream Adventure</span>
                 </h1>
-                <p class="text-xl md:text-2xl text-medium-gray mb-12 max-w-3xl mx-auto leading-relaxed">
+                <p class="text-2xl md:text-3xl text-medium-gray mb-12 max-w-3xl mx-auto leading-relaxed">
                     Discover breathtaking destinations, create unforgettable memories, and craft the perfect journey with our expert planning tools.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <a href="{{ route('login') }}" class="btn-primary text-lg px-12 py-5">
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                    <a href="{{ route('login') }}" class="btn-primary text-lg px-14 py-5 rounded-full shadow-lg font-semibold">
                         Start Planning Now
                     </a>
-                    <a href="#destinations" class="btn-secondary text-lg px-12 py-5">
+                    <a href="#destinations" class="btn-secondary text-lg px-14 py-5 rounded-full shadow-lg font-semibold">
                         Explore Destinations
                     </a>
                 </div>
             </div>
         </div>
-        
-        <!-- Floating Elements -->
-        <div class="absolute top-20 left-10 w-20 h-20 bg-primary-yellow/20 rounded-full blur-xl"></div>
-        <div class="absolute bottom-20 right-10 w-32 h-32 bg-secondary-yellow/20 rounded-full blur-xl"></div>
+        <div class="absolute top-20 left-10 w-24 h-24 bg-primary-yellow/20 rounded-full blur-2xl"></div>
+        <div class="absolute bottom-20 right-10 w-40 h-40 bg-secondary-yellow/20 rounded-full blur-2xl"></div>
     </section>
 
     <!-- Features Section -->
-    <section class="section bg-light-gray">
+    <section class="section bg-light-gray py-20">
         <div class="container">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-primary-dark">Why Choose Trip Craft?</h2>
-                <p class="text-xl text-medium-gray max-w-2xl mx-auto">
+                <h2 class="text-5xl md:text-6xl font-bold mb-6 text-primary-dark">Why Choose Trip Craft?</h2>
+                <p class="text-2xl text-medium-gray max-w-2xl mx-auto">
                     We make trip planning <span class="descriptor-words">effortless</span>, <span class="descriptor-words">exciting</span>, and <span class="descriptor-words">unforgettable</span>
                 </p>
             </div>
-            
-            <div class="grid-layout">
-                <div class="feature-card">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="feature-card bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center text-center">
                     <div class="w-16 h-16 bg-gradient-to-r from-primary-yellow to-secondary-yellow rounded-2xl flex items-center justify-center mb-6 mx-auto">
                         <i class="fas fa-map-marked-alt text-2xl text-primary-dark"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-4 text-primary-dark">Smart Planning</h3>
                     <p class="text-medium-gray">Our AI-powered system helps you create the perfect itinerary based on your preferences and budget.</p>
                 </div>
-                
-                <div class="feature-card">
+                <div class="feature-card bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center text-center">
                     <div class="w-16 h-16 bg-gradient-to-r from-primary-yellow to-secondary-yellow rounded-2xl flex items-center justify-center mb-6 mx-auto">
                         <i class="fas fa-users text-2xl text-primary-dark"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-4 text-primary-dark">Community Driven</h3>
                     <p class="text-medium-gray">Connect with fellow travelers, share experiences, and get insider tips from locals worldwide.</p>
                 </div>
-                
-                <div class="feature-card">
+                <div class="feature-card bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center text-center">
                     <div class="w-16 h-16 bg-gradient-to-r from-primary-yellow to-secondary-yellow rounded-2xl flex items-center justify-center mb-6 mx-auto">
                         <i class="fas fa-shield-alt text-2xl text-primary-dark"></i>
                     </div>
@@ -123,22 +115,21 @@
     </section>
 
     <!-- Destinations Section -->
-    <section id="destinations" class="section bg-white">
+    <section id="destinations" class="section bg-white py-20">
         <div class="container">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-primary-dark">Popular Destinations</h2>
-                <p class="text-xl text-medium-gray">Discover amazing places that will take your breath away</p>
+                <h2 class="text-5xl md:text-6xl font-bold mb-6 text-primary-dark">Popular Destinations</h2>
+                <p class="text-2xl text-medium-gray">Discover amazing places that will take your breath away</p>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="card group">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div class="card group bg-white rounded-2xl shadow-xl p-8 flex flex-col">
                     <div class="relative overflow-hidden rounded-xl mb-6">
-                        <img src="{{ asset('images/camping.jpg') }}" alt="Camping Adventure" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <img src="{{ asset('images/camping.jpg') }}" alt="Camping Adventure" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500 rounded-xl">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-xl"></div>
                     </div>
                     <h3 class="text-2xl font-bold mb-3 text-primary-dark">Camping Adventure</h3>
                     <p class="text-medium-gray mb-4">Experience the great outdoors with our guided camping expeditions.</p>
-                    <div class="flex items-center justify-between">
+                    <div class="flex items-center justify-between mt-auto">
                         <div class="flex items-center space-x-1">
                             <i class="fas fa-star text-primary-yellow"></i>
                             <i class="fas fa-star text-primary-yellow"></i>
@@ -146,18 +137,17 @@
                             <i class="fas fa-star text-primary-yellow"></i>
                             <i class="fas fa-star text-gray-300"></i>
                         </div>
-                        <span class="text-primary-yellow font-bold">$299</span>
+                        <span class="text-primary-yellow font-bold text-lg">$299</span>
                     </div>
                 </div>
-                
-                <div class="card group">
+                <div class="card group bg-white rounded-2xl shadow-xl p-8 flex flex-col">
                     <div class="relative overflow-hidden rounded-xl mb-6">
-                        <img src="{{ asset('images/go_karting.jpg') }}" alt="Go Kart Racing" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <img src="{{ asset('images/go_karting.jpg') }}" alt="Go Kart Racing" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500 rounded-xl">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-xl"></div>
                     </div>
                     <h3 class="text-2xl font-bold mb-3 text-primary-dark">Go Kart Racing</h3>
                     <p class="text-medium-gray mb-4">Feel the adrenaline rush with our high-speed karting experiences.</p>
-                    <div class="flex items-center justify-between">
+                    <div class="flex items-center justify-between mt-auto">
                         <div class="flex items-center space-x-1">
                             <i class="fas fa-star text-primary-yellow"></i>
                             <i class="fas fa-star text-primary-yellow"></i>
@@ -165,18 +155,17 @@
                             <i class="fas fa-star text-primary-yellow"></i>
                             <i class="fas fa-star text-primary-yellow"></i>
                         </div>
-                        <span class="text-primary-yellow font-bold">$199</span>
+                        <span class="text-primary-yellow font-bold text-lg">$199</span>
                     </div>
                 </div>
-                
-                <div class="card group">
+                <div class="card group bg-white rounded-2xl shadow-xl p-8 flex flex-col">
                     <div class="relative overflow-hidden rounded-xl mb-6">
-                        <img src="{{ asset('images/water_park.jpg') }}" alt="Water Park Fun" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <img src="{{ asset('images/water_park.jpg') }}" alt="Water Park Fun" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500 rounded-xl">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-xl"></div>
                     </div>
                     <h3 class="text-2xl font-bold mb-3 text-primary-dark">Water Park Fun</h3>
                     <p class="text-medium-gray mb-4">Splash and slide your way through exciting water adventures.</p>
-                    <div class="flex items-center justify-between">
+                    <div class="flex items-center justify-between mt-auto">
                         <div class="flex items-center space-x-1">
                             <i class="fas fa-star text-primary-yellow"></i>
                             <i class="fas fa-star text-primary-yellow"></i>
@@ -184,7 +173,7 @@
                             <i class="fas fa-star text-primary-yellow"></i>
                             <i class="fas fa-star text-gray-300"></i>
                         </div>
-                        <span class="text-primary-yellow font-bold">$149</span>
+                        <span class="text-primary-yellow font-bold text-lg">$149</span>
                     </div>
                 </div>
             </div>

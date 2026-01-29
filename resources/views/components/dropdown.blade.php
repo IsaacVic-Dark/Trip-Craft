@@ -1,4 +1,4 @@
-@props(['align' => 'right', 'width' => '48', 'contentClasses' => 'py-1 bg-white border border-gray-200'])
+@props(['align' => 'right', 'width' => '48', 'contentClasses' => 'py-2 bg-white border border-gray-200'])
 
 @php
 switch ($align) {
@@ -16,12 +16,12 @@ switch ($align) {
 
 switch ($width) {
     case '48':
-        $width = 'w-48';
+        $width = 'w-56';
         break;
 }
 @endphp
 
-<div class="relative" x-data="{ open: false }" @click.outside="open = false" @close.stop="open = false">
+<div class="relative font-sans" x-data="{ open: false }" @click.outside="open = false" @close.stop="open = false">
     <div @click="open = ! open">
         {{ $trigger }}
     </div>
@@ -33,10 +33,10 @@ switch ($width) {
             x-transition:leave="transition ease-in duration-75"
             x-transition:leave-start="opacity-100 scale-100"
             x-transition:leave-end="opacity-0 scale-95"
-            class="absolute z-50 mt-2 {{ $width }} rounded-xl shadow-card {{ $alignmentClasses }}"
+            class="absolute z-50 mt-2 {{ $width }} rounded-2xl shadow-lg {{ $alignmentClasses }}"
             style="display: none;"
             @click="open = false">
-        <div class="rounded-xl ring-1 ring-gray-200 {{ $contentClasses }}">
+        <div class="rounded-2xl ring-1 ring-gray-200 {{ $contentClasses }}">
             {{ $content }}
         </div>
     </div>

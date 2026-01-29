@@ -25,7 +25,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('/plan', [HomeController::class, 'plan'])->name('page.plan');
+Route::get('/plan', [HomeController::class, 'plan'])->name('plan');
 
 Route::get('/review', [HomeController::class, 'review'])->name('page.review');
 

@@ -15,7 +15,7 @@
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('page.plan')" :active="request()->routeIs('page.plan')">
+                    <x-nav-link :href="route('plan')" :active="request()->routeIs('plan')">
                         {{ __('Plan Trip') }}
                     </x-nav-link>
                     <x-nav-link href="#" :active="false">
@@ -86,7 +86,7 @@
                 <i class="fas fa-home mr-2"></i>
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('page.plan')" :active="request()->routeIs('page.plan')">
+            <x-responsive-nav-link :href="route('plan')" :active="request()->routeIs('plan')">
                 <i class="fas fa-map mr-2"></i>
                 {{ __('Plan Trip') }}
             </x-responsive-nav-link>

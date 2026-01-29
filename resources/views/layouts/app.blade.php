@@ -32,20 +32,16 @@
     </head>
     
     <body class="bg-white text-primary-dark font-sans antialiased">
-        <div class="min-h-screen">
+        <div class="min-h-screen flex flex-col">
             @include('layouts.navigation')
-
-            <!-- Page Heading -->
             @if (isset($header))
                 <header class="bg-light-gray border-b border-gray-200">
-                    <div class="container py-6">
+                    <div class="container mx-auto py-8 px-4">
                         {{ $header }}
                     </div>
                 </header>
             @endif
-
-            <!-- Page Content -->
-            <main>
+            <main class="flex-1 bg-white">
                 @if (session('message'))
                     <div class="fixed top-4 right-4 z-50 bg-green-500 text-white px-6 py-3 rounded-2xl shadow-lg transform transition-all duration-300" id="message">
                         <div class="flex items-center space-x-2">
@@ -63,11 +59,9 @@
                         }, 3000);
                     </script>
                 @endif
-                
                 {{ $slot }}
             </main>
+            <x-footer/>
         </div>
-
-        <x-footer/>
     </body>
 </html>
